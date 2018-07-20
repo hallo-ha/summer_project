@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 글 수정</title>
+</head>
+<body>
+    <h1>게시판 글 수정</h1>
+    <form action="/update" method="POST">
+        <table width ="600" border="1">
+            <tr>
+                <td>작성자</td>
+                <td>
+                    <input type="hidden" name='page' value="{{datas.page}}">
+                    <input type="hidden" name='num' value="{{datas.b.num}}">
+                    <input type="text" name="writer" value="{{datas.b.writer}}">
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pwd"></td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td><input type="text" name ="title" value="{{datas.b.title}}"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="content" cols="30" rows="10">{{datas.b.content}}</textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="수정">
+                    <input type="reset" value="취소">
+                </td>
+                <td></td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>

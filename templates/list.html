@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 리스트</title>
+</head>
+<body>
+    <h1>게시판 리스트</h1>
+    <a href="/write">글쓰기</a><br>
+    <table  style="width: 50em" border="1">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>날짜</th>
+            <th>조회</th>
+        </tr>
+        {% for b in datas.lists %}
+        <tr>
+            <td>{{datas.max- (loop.index -1) }}</td>
+            <td><a href="/read/{{b.num}}/{{datas.page}}">{{b.title}}</a></td>
+            <td>{{b.writer}}</td>
+            <td>{{b.regdate}}</td>
+            <td>{{b.hit}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="width :50em; text-align: center; padding-top: 4px">
+        {% if datas.page > datas.link_size %}
+        [ <a style="text-decoration: none" href="/list/1">◀◀</a>]
+        [ <a style="text-decoration: none" href="/list/{{datas.start_link - 1}}">◀</a>]
+        {% else %}
+        [ <span style="color: gray;">◀◀</span>]
+        [ <span style="color: gray;">◀</span>]
+        {% endif  %}
+        &nbsp;&nbsp;
+        {% for i in range(datas.start_link, datas.end_link+1)  %}
+            {% if i==datas.page %}
+            [ {{i}}]
+            {% else %}
+            [ <a style="text-decoration: none" href="/list/{{i}}">{{i}}</a>]
+            {% endif %}
+        {% endfor %}
+        &nbsp;&nbsp;
+        {% if datas.end_link < datas.total_page %}
+        [ <a style="text-decoration: none" href="/list/{{datas.end_link+1}}">▶</a>]
+        [ <a style="text-decoration: none" href="/list/{{datas.total_page}}">▶▶</a>]
+        {% else %}
+        [ <span style="color: gray;">▶</span>]
+        [ <span style="color: gray;">▶▶</span>]
+        {% endif  %}        
+    </div>
+</body>
+</html>

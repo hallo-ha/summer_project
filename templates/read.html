@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>글 읽기</title>
+    <script>
+        function go_update() {
+            location.href ="/update/{{datas.b.num}}/{{datas.page}}"
+        }
+        function go_delete() {
+            location.href = "/delete/{{datas.b.num}}/{{datas.page}}"
+        }
+        function go_comment() {
+            location.href = "/comment/{{datas.b.num}}/{{datas.page}}"
+        }
+
+    </script>
+</head>
+<body>
+    <h1>글 읽기</h1>
+    <a href="/list/{{datas.page}}">리스트</a><br><br>
+    <table width='600' border="1">
+        <tr>
+            <th>글쓴이</th>
+            <td>{{datas.b.writer}}</td>
+            <th>날짜</th>
+            <td>{{datas.b.regdate}}</td>
+            <th>조회</th>
+            <td>{{datas.b.hit}}</td>
+        </tr>
+        <tr>
+            <td colspan="6"><p>{{datas.b.content}}</p></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <input type='button' value="수정" onclick="go_update()">
+                <input type="button" value="삭제" onclick="go_delete()">
+                <input type="button" value="댓글" onclick="go_comment()">
+            </td>
+        </tr>
+    </table>
+    {% if datas.c %}
+    <br><br><div style="width: 37em; padding-top :5px; border: 2px solid burlywood;">
+        {% for i in datas.c %}
+        이름 : {{i.writer}} 내용 : {{i.content}} 날짜 : {{i.regdate}} <br>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

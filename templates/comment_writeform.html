@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>댓글 쓰기</title>
+</head>
+<body>
+    <h1>댓글 쓰기</h1>
+    <form action='/comment/write' method="POST">
+        <table border="1" style="width :40em;">
+            <tr>
+                <td>글쓴이</td>
+                <td>
+                    <input type="text" name="writer">
+                    <input type="hidden" name="num" value="{{datas.num}}">
+                    <input type="hidden" name="page" value="{{datas.page}}">
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pwd"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="content" cols='30' rows='10'></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="댓글쓰기">
+                    <input type="reset" value="댓글취소">
+                </td>
+            </tr>
+        </table>
+</body>
+</html>

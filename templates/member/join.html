@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입 </title>
+    <script>
+        function check() {
+            var t1=document.frm1.t1;
+            var t2=document.frm1.t2;
+            var t3=document.frm1.t3;
+            if(t2.value =='') {
+                alert('전화번호 두번째 값을 꼭 입력해주세요.');
+                t2.focus();
+                return;
+            }
+            if(t3.value =='') {
+                alert('전화번호 세번째 값을 꼭 입력해주세요.');
+                t3.focus();
+                return;
+            }
+            var tel=t1.value +'-'+t2.value+'-'+t3.value;
+            document.frm1.phone.value=tel;
+            document.frm1.submit();
+        }
+    </script>
+</head>
+<body>
+    <h1>회원 가입</h1>
+    <form action="/join" method="POST" name='frm1'>
+    <table style='width: 30em'; border="1">
+    <tr>
+        <th>아이디</th>
+        <td><input type="text" name='id'></td>
+    </tr>
+    <tr>
+        <th>비밀번호</th>
+        <td><input type="password" name='pwd'></td>
+    </tr>
+    <tr>
+        <th>이름</th>
+        <td><input type="text" name='name'></td>
+    </tr>
+    <tr>
+        <th>전화번호</th>
+        <td>
+            <select name="t1">
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="019">019</option>
+            </select>
+            -
+            <input type="text" name='t2' size='4' maxlength="4">
+            -
+            <input type="text" name="t3" size='4' maxlength="4">
+            <input type="hidden" name="phone">
+        </td>
+    </tr>
+    <tr>
+        <th>성별</th>
+        <td>
+            <input type="radio" name="gender" value="남" checked='checked'>남
+            <input type="radio" name="gender" value="여" checked='checked'>여
+        </td>
+    </tr>
+    <tr>
+        <th>주소</th>
+        <td>
+            <input type="text" name="addr" size="50" maxlength="200">
+        </td>
+    </tr>
+    <tr>
+        <th>생년월일</th>
+        <td>
+            <input type="text" name='birth' size="8" maxlength="8">
+            Ex) 20180720
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="가입" onclick="check()">
+            <input type="reset" value="취소">
+        </td>
+    </tr>
+    </table>    
+    </form>
+</body>
+</html>
